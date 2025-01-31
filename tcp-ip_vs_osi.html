@@ -1,1 +1,158 @@
-edit in vs code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Model Visualizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+        }
+        header {
+            background-color: #ff6f61;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .model {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(145deg, #0077ff, #00c6ff);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .model h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .layer {
+            padding: 0.7rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 8px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .layer:hover {
+            background-color: #ffecb3;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown {
+            display: none;
+            position: relative;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            color: #333;
+            padding: 0.8rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            margin-top: 0.5rem;
+        }
+        .layer.active .dropdown {
+            display: block;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #ff6f61;
+            color: white;
+            font-size: 1rem;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const layers = document.querySelectorAll(".layer");
+
+            layers.forEach(layer => {
+                layer.addEventListener("click", () => {
+                    const isActive = layer.classList.contains("active");
+
+                    // Close all other dropdowns
+                    document.querySelectorAll(".layer").forEach(l => l.classList.remove("active"));
+
+                    // Adjust positions
+                    layers.forEach(l => l.style.marginBottom = "0.5rem");
+
+                    if (!isActive) {
+                        layer.classList.add("active");
+                        layer.style.marginBottom = "1.5rem"; // Extra space for dropdown
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>OSI Model Visualizer</h1>
+        <p>Learn the OSI model easily!</p>
+    </header>
+
+    <div class="container">
+        <h2>OSI Model</h2>
+        <div class="model">
+            <h3>OSI Model</h3>
+            <div class="layer">
+                Application
+                <div class="dropdown">Provides network services to end users.</div>
+            </div>
+            <div class="layer">
+                Presentation
+                <div class="dropdown">Formats, encrypts, and compresses data for transmission.</div>
+            </div>
+            <div class="layer">
+                Session
+                <div class="dropdown">Manages sessions and dialogs between devices.</div>
+            </div>
+            <div class="layer">
+                Transport
+                <div class="dropdown">Ensures reliable delivery of data between devices.</div>
+            </div>
+            <div class="layer">
+                Network
+                <div class="dropdown">Handles routing and addressing of packets.</div>
+            </div>
+            <div class="layer">
+                Data Link
+                <div class="dropdown">Manages data transfer between neighboring network nodes.</div>
+            </div>
+            <div class="layer">
+                Physical
+                <div class="dropdown">Deals with hardware and transmission of raw bits.</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Designed by Balaram | Showcasing Networking Concepts</p>
+    </footer>
+</body>
+</html>
